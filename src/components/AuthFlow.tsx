@@ -34,20 +34,20 @@ const AuthFlow: React.FC<AuthFlowProps> = ({ onComplete }) => {
 
   if (currentStep === 'passkey') {
     return (
-      <div className="fixed inset-0 gradient-bg flex items-center justify-center p-6">
-        <div className="w-full max-w-md">
+      <div className="fixed inset-0 gradient-bg flex items-center justify-center p-4 sm:p-6">
+        <div className="w-full max-w-sm sm:max-w-md">
           <Card className="bg-card/80 backdrop-blur-sm border-border/50 animate-slide-in-up">
             <CardHeader className="text-center pb-4">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center animate-pulse">
-                <Fingerprint className="w-8 h-8 text-white" />
+              <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center animate-pulse">
+                <Fingerprint className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
               </div>
-              <CardTitle className="text-2xl text-white">Secure Authentication</CardTitle>
-              <p className="text-muted-foreground">Use your passkey for secure access</p>
+              <CardTitle className="text-xl sm:text-2xl text-white">Secure Authentication</CardTitle>
+              <p className="text-sm sm:text-base text-muted-foreground">Use your passkey for secure access</p>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="text-center space-y-4">
-                <div className="p-6 rounded-lg bg-muted/20 border border-border/30">
-                  <Shield className="w-12 h-12 mx-auto mb-3 text-primary animate-pulse" />
+                <div className="p-4 sm:p-6 rounded-lg bg-muted/20 border border-border/30">
+                  <Shield className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 text-primary animate-pulse" />
                   <p className="text-sm text-muted-foreground">
                     Touch your fingerprint sensor or use face authentication
                   </p>
@@ -55,7 +55,7 @@ const AuthFlow: React.FC<AuthFlowProps> = ({ onComplete }) => {
                 
                 <Button 
                   onClick={handlePasskeyAuth}
-                  className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-medium animate-bounce-in"
+                  className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-medium animate-bounce-in touch-target"
                   size="lg"
                 >
                   <Fingerprint className="mr-2 w-5 h-5" />
@@ -74,12 +74,12 @@ const AuthFlow: React.FC<AuthFlowProps> = ({ onComplete }) => {
   }
 
   return (
-    <div className="fixed inset-0 gradient-bg flex items-center justify-center p-6">
-      <div className="w-full max-w-md">
+    <div className="fixed inset-0 gradient-bg flex items-center justify-center p-4 sm:p-6">
+      <div className="w-full max-w-sm sm:max-w-md">
         <Card className="bg-card/80 backdrop-blur-sm border-border/50 animate-slide-in-up">
           <CardHeader className="text-center">
-            <CardTitle className="text-2xl text-white">Welcome Back</CardTitle>
-            <p className="text-muted-foreground">Sign in to your account</p>
+            <CardTitle className="text-xl sm:text-2xl text-white">Welcome Back</CardTitle>
+            <p className="text-sm sm:text-base text-muted-foreground">Sign in to your account</p>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleLogin} className="space-y-6">
@@ -93,7 +93,7 @@ const AuthFlow: React.FC<AuthFlowProps> = ({ onComplete }) => {
                     placeholder="your@email.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="pl-10 bg-background/50 border-border/50 text-white"
+                    className="pl-10 bg-background/50 border-border/50 text-white touch-target"
                     required
                   />
                 </div>
@@ -109,13 +109,13 @@ const AuthFlow: React.FC<AuthFlowProps> = ({ onComplete }) => {
                     placeholder="••••••••"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="pl-10 pr-10 bg-background/50 border-border/50 text-white"
+                    className="pl-10 pr-10 bg-background/50 border-border/50 text-white touch-target"
                     required
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-white transition-colors"
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-white transition-colors touch-target"
                   >
                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
@@ -124,7 +124,7 @@ const AuthFlow: React.FC<AuthFlowProps> = ({ onComplete }) => {
 
               <Button 
                 type="submit"
-                className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-medium"
+                className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-medium touch-target"
                 size="lg"
               >
                 Continue
@@ -138,7 +138,7 @@ const AuthFlow: React.FC<AuthFlowProps> = ({ onComplete }) => {
               <Button
                 variant="outline"
                 onClick={handleCreateAccount}
-                className="w-full border-border/50 text-white hover:bg-primary/10"
+                className="w-full border-border/50 text-white hover:bg-primary/10 touch-target"
               >
                 Create Account
                 <ExternalLink className="ml-2 w-4 h-4" />

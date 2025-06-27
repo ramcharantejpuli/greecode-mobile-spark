@@ -38,27 +38,27 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({ onComplete }) => {
   };
 
   return (
-    <div className="fixed inset-0 gradient-bg flex items-center justify-center p-6">
-      <div className="w-full max-w-md">
+    <div className="fixed inset-0 gradient-bg flex items-center justify-center p-4 sm:p-6">
+      <div className="w-full max-w-sm sm:max-w-md">
         <Card className="bg-card/80 backdrop-blur-sm border-border/50 animate-slide-in-up">
-          <CardContent className="p-8 text-center">
+          <CardContent className="p-6 sm:p-8 text-center">
             {/* Icon */}
-            <div className={`w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br ${currentPageData.gradient} flex items-center justify-center animate-bounce-in`}>
-              <Icon className="w-10 h-10 text-white" />
+            <div className={`w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 rounded-full bg-gradient-to-br ${currentPageData.gradient} flex items-center justify-center animate-bounce-in`}>
+              <Icon className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
             </div>
 
             {/* Title */}
-            <h2 className="text-2xl font-bold text-white mb-4 animate-fade-in-up">
+            <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 animate-fade-in-up leading-tight">
               {currentPageData.title}
             </h2>
 
             {/* Description */}
-            <p className="text-muted-foreground mb-8 leading-relaxed animate-fade-in-up animation-delay-200">
+            <p className="text-sm sm:text-base text-muted-foreground mb-6 sm:mb-8 leading-relaxed animate-fade-in-up animation-delay-200">
               {currentPageData.description}
             </p>
 
             {/* Progress Indicators */}
-            <div className="flex justify-center gap-2 mb-8">
+            <div className="flex justify-center gap-2 mb-6 sm:mb-8">
               {onboardingPages.map((_, index) => (
                 <div
                   key={index}
