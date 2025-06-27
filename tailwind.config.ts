@@ -86,21 +86,45 @@ export default {
 						height: '0'
 					}
 				},
-				'mic-assemble': {
+				'mic-base-crawl': {
 					'0%': {
-						transform: 'translateY(100px) scale(0)',
+						transform: 'translateX(-100px) scaleX(0)',
 						opacity: '0'
 					},
 					'50%': {
-						transform: 'translateY(20px) scale(0.8)',
-						opacity: '0.7'
+						transform: 'translateX(-20px) scaleX(0.5)',
+						opacity: '0.5'
 					},
 					'100%': {
-						transform: 'translateY(0) scale(1)',
+						transform: 'translateX(0) scaleX(1)',
 						opacity: '1'
 					}
 				},
-				'logo-slide': {
+				'mic-stand-grow': {
+					'0%': {
+						transform: 'scaleY(0)',
+						opacity: '0'
+					},
+					'100%': {
+						transform: 'scaleY(1)',
+						opacity: '1'
+					}
+				},
+				'mic-head-assemble': {
+					'0%': {
+						transform: 'translateY(-50px) scale(0) rotate(180deg)',
+						opacity: '0'
+					},
+					'70%': {
+						transform: 'translateY(5px) scale(1.1) rotate(10deg)',
+						opacity: '0.8'
+					},
+					'100%': {
+						transform: 'translateY(0) scale(1) rotate(0deg)',
+						opacity: '1'
+					}
+				},
+				'logo-slide-in': {
 					'0%': {
 						transform: 'translateX(100px)',
 						opacity: '0'
@@ -111,6 +135,26 @@ export default {
 					},
 					'100%': {
 						transform: 'translateX(0)',
+						opacity: '1'
+					}
+				},
+				'tagline-fade-in': {
+					'0%': {
+						transform: 'translateY(20px)',
+						opacity: '0'
+					},
+					'100%': {
+						transform: 'translateY(0)',
+						opacity: '1'
+					}
+				},
+				'slide-in-up': {
+					'0%': {
+						transform: 'translateY(100px)',
+						opacity: '0'
+					},
+					'100%': {
+						transform: 'translateY(0)',
 						opacity: '1'
 					}
 				},
@@ -154,8 +198,12 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'mic-assemble': 'mic-assemble 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards',
-				'logo-slide': 'logo-slide 1s cubic-bezier(0.4, 0, 0.2, 1) 1.5s forwards',
+				'mic-base-crawl': 'mic-base-crawl 1s cubic-bezier(0.4, 0, 0.2, 1) forwards',
+				'mic-stand-grow': 'mic-stand-grow 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards',
+				'mic-head-assemble': 'mic-head-assemble 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards',
+				'logo-slide-in': 'logo-slide-in 1s cubic-bezier(0.4, 0, 0.2, 1) forwards',
+				'tagline-fade-in': 'tagline-fade-in 0.8s ease-out forwards',
+				'slide-in-up': 'slide-in-up 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards',
 				'fade-in-up': 'fade-in-up 0.6s ease-out forwards',
 				'bounce-in': 'bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards',
 				'typing': 'typing 1.5s infinite'
