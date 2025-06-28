@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -20,26 +19,26 @@ export default {
 		},
 		extend: {
 			colors: {
-				border: 'hsl(var(--border))',
-				input: 'hsl(var(--input))',
-				ring: 'hsl(var(--ring))',
-				background: 'hsl(var(--background))',
-				foreground: 'hsl(var(--foreground))',
+				border: 'rgb(0, 0, 0)',
+				input: 'rgb(245, 245, 245)',
+				ring: 'rgb(255, 193, 7)',
+				background: 'rgb(255, 255, 255)',
+				foreground: 'rgb(0, 0, 0)',
 				primary: {
 					DEFAULT: '#ffc107',
 					foreground: '#000000'
 				},
 				secondary: {
-					DEFAULT: '#ffeb3b',
+					DEFAULT: '#f5f5f5',
 					foreground: '#000000'
 				},
 				destructive: {
-					DEFAULT: '#ff375f',
+					DEFAULT: '#ef4444',
 					foreground: '#ffffff'
 				},
 				muted: {
-					DEFAULT: '#f8f9fa',
-					foreground: '#6c757d'
+					DEFAULT: '#f5f5f5',
+					foreground: '#737373'
 				},
 				accent: {
 					DEFAULT: '#ffc107',
@@ -54,14 +53,14 @@ export default {
 					foreground: '#000000'
 				},
 				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
+					DEFAULT: 'rgb(255, 255, 255)',
+					foreground: 'rgb(0, 0, 0)',
+					primary: 'rgb(255, 193, 7)',
+					'primary-foreground': 'rgb(0, 0, 0)',
+					accent: 'rgb(245, 245, 245)',
+					'accent-foreground': 'rgb(0, 0, 0)',
+					border: 'rgb(0, 0, 0)',
+					ring: 'rgb(255, 193, 7)'
 				}
 			},
 			borderRadius: {
@@ -182,6 +181,37 @@ export default {
 					'50%': {
 						opacity: '0'
 					}
+				},
+				'checkmark-draw': {
+					'0%': {
+						strokeDashoffset: '100',
+						opacity: '0'
+					},
+					'50%': {
+						opacity: '1'
+					},
+					'100%': {
+						strokeDashoffset: '0',
+						opacity: '1'
+					}
+				},
+				'success-bounce': {
+					'0%': {
+						transform: 'scale(0.3)',
+						opacity: '0'
+					},
+					'50%': {
+						transform: 'scale(1.1)',
+						opacity: '0.8'
+					},
+					'70%': {
+						transform: 'scale(0.9)',
+						opacity: '1'
+					},
+					'100%': {
+						transform: 'scale(1)',
+						opacity: '1'
+					}
 				}
 			},
 			animation: {
@@ -193,7 +223,9 @@ export default {
 				'slide-in-up': 'slide-in-up 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards',
 				'fade-in-up': 'fade-in-up 0.6s ease-out forwards',
 				'bounce-in': 'bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards',
-				'typing': 'typing 1.5s infinite'
+				'typing': 'typing 1.5s infinite',
+				'checkmark-draw': 'checkmark-draw 0.8s ease-in-out forwards',
+				'success-bounce': 'success-bounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards'
 			}
 		}
 	},
