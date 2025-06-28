@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -86,42 +85,31 @@ export default {
 						height: '0'
 					}
 				},
-				'mic-base-crawl': {
+				'thinder-bolt-appear': {
 					'0%': {
-						transform: 'translateX(-100px) scaleX(0)',
-						opacity: '0'
+						transform: 'scale(0) rotate(-45deg)',
+						opacity: '0',
+						filter: 'brightness(2)'
 					},
-					'50%': {
-						transform: 'translateX(-20px) scaleX(0.5)',
-						opacity: '0.5'
+					'30%': {
+						transform: 'scale(0.6) rotate(-15deg)',
+						opacity: '0.8',
+						filter: 'brightness(1.8)'
+					},
+					'60%': {
+						transform: 'scale(1.2) rotate(5deg)',
+						opacity: '1',
+						filter: 'brightness(1.2)'
+					},
+					'80%': {
+						transform: 'scale(0.95) rotate(-2deg)',
+						opacity: '1',
+						filter: 'brightness(1.1)'
 					},
 					'100%': {
-						transform: 'translateX(0) scaleX(1)',
-						opacity: '1'
-					}
-				},
-				'mic-stand-grow': {
-					'0%': {
-						transform: 'scaleY(0)',
-						opacity: '0'
-					},
-					'100%': {
-						transform: 'scaleY(1)',
-						opacity: '1'
-					}
-				},
-				'mic-head-assemble': {
-					'0%': {
-						transform: 'translateY(-50px) scale(0) rotate(180deg)',
-						opacity: '0'
-					},
-					'70%': {
-						transform: 'translateY(5px) scale(1.1) rotate(10deg)',
-						opacity: '0.8'
-					},
-					'100%': {
-						transform: 'translateY(0) scale(1) rotate(0deg)',
-						opacity: '1'
+						transform: 'scale(1) rotate(0deg)',
+						opacity: '1',
+						filter: 'brightness(1)'
 					}
 				},
 				'logo-slide-in': {
@@ -198,9 +186,7 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'mic-base-crawl': 'mic-base-crawl 1s cubic-bezier(0.4, 0, 0.2, 1) forwards',
-				'mic-stand-grow': 'mic-stand-grow 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards',
-				'mic-head-assemble': 'mic-head-assemble 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards',
+				'thinder-bolt-appear': 'thinder-bolt-appear 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards',
 				'logo-slide-in': 'logo-slide-in 1s cubic-bezier(0.4, 0, 0.2, 1) forwards',
 				'tagline-fade-in': 'tagline-fade-in 0.8s ease-out forwards',
 				'slide-in-up': 'slide-in-up 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards',
