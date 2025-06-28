@@ -62,25 +62,39 @@
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
     overscroll-behavior: none;
+    user-select: none; /* Prevent text selection on mobile */
   }
 
   /* Mobile viewport fix */
   html {
     height: 100%;
     overflow-x: hidden;
+    max-width: 100vw;
   }
 
   body {
     min-height: 100vh;
     min-height: -webkit-fill-available;
+    max-width: 100vw;
+    overflow-x: hidden;
   }
 
-  /* Prevent zoom on input focus */
-  input, select, textarea {
-    font-size: 16px;
+  /* Prevent zoom on input focus - Mobile specific */
+  input, select, textarea, button {
+    font-size: 16px !important;
+    -webkit-appearance: none;
+    border-radius: 0;
   }
 
-  @media screen and (max-width: 768px) {
+  /* iOS specific fixes */
+  @supports (-webkit-touch-callout: none) {
+    input, textarea, select {
+      font-size: 16px !important;
+    }
+  }
+
+  /* Android specific fixes */
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
     input, select, textarea {
       font-size: 16px !important;
     }
@@ -98,13 +112,7 @@
   
   /* Mobile-optimized floating button */
   .floating-button {
-    @apply fixed bottom-6 right-6 w-14 h-14 rounded-full bg-yellow-400 text-black shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-50;
-  }
-
-  @media (max-width: 640px) {
-    .floating-button {
-      @apply w-16 h-16 bottom-4 right-4;
-    }
+    @apply fixed bottom-8 right-6 w-16 h-16 rounded-full bg-yellow-400 text-black shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-50 border-2 border-black;
   }
   
   .typing-cursor::after {
@@ -141,16 +149,24 @@
     padding-right: env(safe-area-inset-right);
   }
 
-  /* Touch-friendly buttons */
+  /* Touch-friendly buttons - Minimum 44px for accessibility */
   .touch-target {
     min-height: 44px;
     min-width: 44px;
+    cursor: pointer;
   }
 
   /* Smooth scrolling */
   .smooth-scroll {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
+  }
+
+  /* Mobile-first responsive design */
+  .mobile-container {
+    max-width: 428px;
+    margin: 0 auto;
+    min-height: 100vh;
   }
 
   /* Professional animations */
@@ -173,8 +189,19 @@
   .success-animation {
     animation: success-bounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
   }
+
+  /* Mobile-specific tap states */
+  .tap-highlight {
+    -webkit-tap-highlight-color: rgba(255, 193, 7, 0.3);
+  }
+
+  /* Prevent pull-to-refresh on mobile */
+  .no-pull-refresh {
+    overscroll-behavior-y: contain;
+  }
 }
 
+/* Mobile-optimized keyframes */
 @keyframes checkmark-draw {
   0% {
     stroke-dashoffset: 100;
@@ -205,5 +232,44 @@
   100% {
     transform: scale(1);
     opacity: 1;
+  }
+}
+
+/* Mobile-specific media queries */
+@media (max-width: 480px) {
+  .mobile-text-sm {
+    font-size: 0.875rem;
+  }
+  
+  .mobile-text-base {
+    font-size: 1rem;
+  }
+  
+  .mobile-text-lg {
+    font-size: 1.125rem;
+  }
+  
+  .mobile-spacing {
+    padding: 1rem;
+  }
+}
+
+/* Handle different mobile screen sizes */
+@media (max-width: 375px) {
+  .mobile-container {
+    padding: 0.75rem;
+  }
+}
+
+@media (min-width: 376px) and (max-width: 414px) {
+  .mobile-container {
+    padding: 1rem;
+  }
+}
+
+/* Landscape mobile orientation */
+@media (max-height: 500px) and (orientation: landscape) {
+  .mobile-container {
+    padding: 0.5rem;
   }
 }

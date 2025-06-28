@@ -8,7 +8,8 @@ import {
   Zap,
   Menu,
   ArrowRight,
-  X
+  X,
+  Headphones
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -39,7 +40,7 @@ const MainInterface: React.FC = () => {
       title: 'Interview Assistant',
       description: 'Ace your interview with real time Answers!',
       icon: Briefcase,
-      color: 'bg-[#2DD4BF]', // Keep green color for this box only
+      color: 'bg-[#2DD4BF]',
       textColor: 'text-white',
       progress: 75,
       isSpecial: true
@@ -100,80 +101,80 @@ const MainInterface: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Mobile Header */}
-      <div className="sticky top-0 z-40 bg-white border-b border-gray-200">
-        <div className="flex items-center justify-between p-4">
+    <div className="min-h-screen bg-white max-w-sm mx-auto relative overflow-x-hidden">
+      {/* Mobile Header - Fixed */}
+      <div className="sticky top-0 z-40 bg-white border-b border-black">
+        <div className="flex items-center justify-between p-4 min-h-[60px]">
           <div className="animate-fade-in-up">
-            <h1 className="text-xl font-bold text-black">Greecode</h1>
+            <h1 className="text-2xl font-bold text-black">Greecode</h1>
           </div>
           
           <Button 
             variant="outline" 
             size="icon"
-            className="animate-bounce-in border-yellow-300 hover:border-yellow-400 w-10 h-10 bg-white hover:bg-yellow-50"
+            className="animate-bounce-in border-2 border-black hover:border-black w-12 h-12 bg-white hover:bg-yellow-400 touch-target"
             onClick={toggleMenu}
           >
-            <Menu className="w-4 h-4 text-black" />
+            <Menu className="w-5 h-5 text-black" />
           </Button>
         </div>
       </div>
 
-      {/* Sliding Navigation Menu */}
-      <div className={`fixed top-0 right-0 h-full w-80 bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out ${
+      {/* Sliding Navigation Menu - Mobile Optimized */}
+      <div className={`fixed top-0 right-0 h-full w-full bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out ${
         isMenuOpen ? 'translate-x-0' : 'translate-x-full'
       }`}>
-        <div className="p-6 border-b border-gray-200">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold text-black">Menu</h2>
+        <div className="p-6 border-b border-black">
+          <div className="flex items-center justify-between mb-6 min-h-[60px]">
+            <h2 className="text-xl font-bold text-black">Menu</h2>
             <Button 
               variant="ghost" 
               size="icon"
               onClick={toggleMenu}
-              className="hover:bg-gray-100"
+              className="hover:bg-gray-100 w-12 h-12 touch-target"
             >
-              <X className="w-5 h-5 text-black" />
+              <X className="w-6 h-6 text-black" />
             </Button>
           </div>
           
-          {/* User Profile Section */}
-          <div className="flex items-center gap-3 p-3 bg-yellow-50 rounded-lg">
-            <div className="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center">
-              <User className="w-6 h-6 text-black" />
+          {/* User Profile Section - Mobile Optimized */}
+          <div className="flex items-center gap-4 p-4 bg-yellow-50 rounded-lg border-2 border-black">
+            <div className="w-14 h-14 bg-yellow-400 rounded-full flex items-center justify-center border-2 border-black">
+              <User className="w-7 h-7 text-black" />
             </div>
             <div>
               <p className="text-sm font-medium text-black">{greeting}</p>
-              <p className="text-lg font-semibold text-black">Ravi</p>
+              <p className="text-xl font-bold text-black">Ravi</p>
             </div>
           </div>
         </div>
 
-        {/* Navigation Items */}
-        <div className="p-6 space-y-4">
+        {/* Navigation Items - Mobile Optimized */}
+        <div className="p-6 space-y-4 overflow-y-auto max-h-[calc(100vh-200px)]">
           {navigationItems.map((item) => (
             <div 
               key={item.id}
-              className="p-4 bg-gray-50 rounded-lg hover:bg-yellow-50 transition-colors cursor-pointer"
+              className="p-5 bg-gray-50 rounded-lg border-2 border-black hover:bg-yellow-50 transition-colors cursor-pointer touch-target"
               onClick={() => {
                 handleCardClick(item.id);
                 setIsMenuOpen(false);
               }}
             >
-              <div className="flex items-center justify-between mb-2">
-                <h3 className="font-semibold text-black">{item.title}</h3>
-                <ArrowRight className="w-4 h-4 text-gray-600" />
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="font-bold text-black text-lg">{item.title}</h3>
+                <ArrowRight className="w-5 h-5 text-black" />
               </div>
-              <p className="text-sm text-gray-600 mb-3">{item.description}</p>
+              <p className="text-sm text-gray-600 mb-4 leading-relaxed">{item.description}</p>
               
               {/* Progress Bar */}
-              <div className="space-y-1">
-                <div className="flex justify-between text-xs">
-                  <span className="text-gray-500">Progress</span>
-                  <span className="text-black font-medium">{item.progress}%</span>
+              <div className="space-y-2">
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-500 font-medium">Progress</span>
+                  <span className="text-black font-bold">{item.progress}%</span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
+                <div className="w-full bg-gray-200 rounded-full h-3 border border-black">
                   <div 
-                    className="h-2 bg-yellow-400 rounded-full transition-all duration-500"
+                    className="h-full bg-yellow-400 rounded-full transition-all duration-500 border-r border-black"
                     style={{ width: `${item.progress}%` }}
                   />
                 </div>
@@ -191,9 +192,9 @@ const MainInterface: React.FC = () => {
         />
       )}
 
-      <div className="p-4 pb-24">
+      <div className="p-4 pb-32">
         {/* Feature Cards Grid - Mobile Optimized */}
-        <div className="grid grid-cols-2 gap-3 mb-6">
+        <div className="grid grid-cols-2 gap-4 mb-8">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             const isSelected = selectedCard === feature.id;
@@ -202,9 +203,9 @@ const MainInterface: React.FC = () => {
               <Card 
                 key={feature.id}
                 className={`
-                  cursor-pointer transition-all duration-500 hover:scale-105 hover:shadow-lg
-                  ${isSelected ? 'ring-2 ring-yellow-400 scale-105' : ''}
-                  ${feature.color} border border-gray-200 shadow-md
+                  cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg touch-target
+                  ${isSelected ? 'ring-4 ring-yellow-400 scale-105' : ''}
+                  ${feature.color} border-2 border-black shadow-lg
                 `}
                 style={{ 
                   animationDelay: `${index * 150}ms`,
@@ -212,37 +213,37 @@ const MainInterface: React.FC = () => {
                 }}
                 onClick={() => handleCardClick(feature.id)}
               >
-                <CardHeader className="pb-2 p-4">
-                  <div className={`w-10 h-10 rounded-xl ${feature.isSpecial ? 'bg-white/20' : 'bg-yellow-100'} flex items-center justify-center mb-2`}>
-                    <Icon className={`w-5 h-5 ${feature.isSpecial ? 'text-white' : 'text-yellow-600'}`} />
+                <CardHeader className="pb-3 p-5">
+                  <div className={`w-12 h-12 rounded-xl ${feature.isSpecial ? 'bg-white/20' : 'bg-yellow-400'} flex items-center justify-center mb-3 border-2 ${feature.isSpecial ? 'border-white/30' : 'border-black'}`}>
+                    <Icon className={`w-6 h-6 ${feature.isSpecial ? 'text-white' : 'text-black'}`} />
                   </div>
-                  <CardTitle className={`text-sm ${feature.textColor} leading-tight font-semibold`}>
+                  <CardTitle className={`text-base ${feature.textColor} leading-tight font-bold`}>
                     {feature.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="p-4 pt-0">
-                  <p className={`text-xs ${feature.isSpecial ? 'text-white/80' : 'text-gray-600'} mb-3 leading-relaxed`}>
+                <CardContent className="p-5 pt-0">
+                  <p className={`text-sm ${feature.isSpecial ? 'text-white/80' : 'text-gray-600'} mb-4 leading-relaxed`}>
                     {feature.description}
                   </p>
                   
                   {/* Progress Bar */}
-                  <div className="space-y-1">
-                    <div className="flex justify-between text-xs">
-                      <span className={`${feature.isSpecial ? 'text-white/70' : 'text-gray-500'}`}>Progress</span>
-                      <span className={`${feature.isSpecial ? 'text-white' : 'text-black'} font-medium`}>{feature.progress}%</span>
+                  <div className="space-y-2">
+                    <div className="flex justify-between text-sm">
+                      <span className={`${feature.isSpecial ? 'text-white/70' : 'text-gray-500'} font-medium`}>Progress</span>
+                      <span className={`${feature.isSpecial ? 'text-white' : 'text-black'} font-bold`}>{feature.progress}%</span>
                     </div>
-                    <div className={`w-full ${feature.isSpecial ? 'bg-white/20' : 'bg-yellow-200'} rounded-full h-1.5`}>
+                    <div className={`w-full ${feature.isSpecial ? 'bg-white/20' : 'bg-gray-200'} rounded-full h-2 border ${feature.isSpecial ? 'border-white/30' : 'border-black'}`}>
                       <div 
-                        className={`h-1.5 ${feature.isSpecial ? 'bg-white' : 'bg-yellow-500'} rounded-full transition-all duration-1000`}
+                        className={`h-2 ${feature.isSpecial ? 'bg-white' : 'bg-yellow-400'} rounded-full transition-all duration-1000 ${!feature.isSpecial ? 'border-r border-black' : ''}`}
                         style={{ width: isSelected ? `${feature.progress}%` : '0%' }}
                       />
                     </div>
                   </div>
 
                   {feature.id === 1 && (
-                    <div className="mt-3 flex items-center text-xs text-white/90">
+                    <div className="mt-4 flex items-center text-sm text-white/90 font-medium">
                       <span>Get Started</span>
-                      <ArrowRight className="w-3 h-3 ml-1" />
+                      <ArrowRight className="w-4 h-4 ml-2" />
                     </div>
                   )}
                 </CardContent>
@@ -251,37 +252,37 @@ const MainInterface: React.FC = () => {
           })}
         </div>
 
-        {/* AI Response Panel */}
-        <Card className="bg-white border border-gray-200 shadow-md animate-fade-in-up">
-          <CardHeader className="pb-3">
-            <CardTitle className="flex items-center gap-3 text-black text-lg">
-              <div className="w-8 h-8 rounded-lg bg-yellow-400 flex items-center justify-center">
-                <MessageSquare className="w-4 h-4 text-black" />
+        {/* AI Response Panel - Mobile Optimized */}
+        <Card className="bg-white border-2 border-black shadow-lg animate-fade-in-up">
+          <CardHeader className="pb-4 p-6">
+            <CardTitle className="flex items-center gap-4 text-black text-xl">
+              <div className="w-10 h-10 rounded-lg bg-yellow-400 flex items-center justify-center border-2 border-black">
+                <MessageSquare className="w-5 h-5 text-black" />
               </div>
               AI Assistant
             </CardTitle>
           </CardHeader>
-          <CardContent>
-            <div className="min-h-24 p-4 bg-yellow-50 rounded-lg mb-4 border border-yellow-100">
+          <CardContent className="p-6 pt-0">
+            <div className="min-h-32 p-5 bg-yellow-50 rounded-lg mb-6 border-2 border-black">
               {isRecording ? (
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-4">
                   <div className="flex gap-1">
                     {[...Array(5)].map((_, i) => (
                       <div 
                         key={i}
-                        className={`w-1 bg-yellow-500 rounded-full animate-pulse`}
+                        className={`w-1.5 bg-yellow-500 rounded-full animate-pulse`}
                         style={{ 
-                          height: `${Math.random() * 20 + 10}px`,
+                          height: `${Math.random() * 20 + 15}px`,
                           animationDelay: `${i * 100}ms`
                         }}
                       />
                     ))}
                   </div>
-                  <span className="text-yellow-600 text-sm font-medium">Listening...</span>
+                  <span className="text-yellow-600 text-base font-bold">Listening...</span>
                 </div>
               ) : (
-                <div className="text-gray-600 text-sm">
-                  <span className="typing-cursor">
+                <div className="text-gray-600 text-base">
+                  <span className="typing-cursor font-medium">
                     Hi! I'm your AI interview assistant. Tap the microphone to start practicing
                   </span>
                 </div>
@@ -289,33 +290,30 @@ const MainInterface: React.FC = () => {
             </div>
             
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2 text-xs text-gray-500">
-                <div className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse" />
-                AI Assistant Active
+              <div className="flex items-center gap-3 text-sm text-gray-500">
+                <div className="w-3 h-3 bg-yellow-500 rounded-full animate-pulse" />
+                <span className="font-medium">AI Assistant Active</span>
               </div>
             </div>
           </CardContent>
         </Card>
       </div>
 
-      {/* Floating Customer Care Button */}
-      <div className="fixed bottom-6 right-6 z-50">
+      {/* Floating Customer Care Button - Mobile Optimized */}
+      <div className="fixed bottom-8 right-6 z-50">
         <Button 
           onClick={toggleRecording}
-          className="w-16 h-16 rounded-full shadow-2xl relative overflow-hidden transition-all duration-300 bg-yellow-400 hover:bg-yellow-500"
+          className="w-16 h-16 rounded-full shadow-2xl relative overflow-hidden transition-all duration-300 bg-yellow-400 hover:bg-yellow-500 border-2 border-black touch-target"
         >
-          <svg 
-            className="w-7 h-7 text-black" 
-            fill="currentColor" 
-            viewBox="0 0 24 24"
-          >
-            <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 4.5C14.8 4.4 14.6 4.4 14.4 4.5L12 5.5L9.6 4.5C9.4 4.4 9.2 4.4 9 4.5L3 7V9L9 6.5L12 7.5L15 6.5L21 9ZM4 9V17H6V21H8V17H10V19H12V17H14V21H16V17H18V19H20V17H22V9H4Z"/>
-          </svg>
+          <Headphones className="w-8 h-8 text-black" />
+          {isRecording && (
+            <div className="absolute inset-0 rounded-full bg-white/20 animate-ping" />
+          )}
         </Button>
       </div>
 
-      {/* Bottom Navigation Placeholder */}
-      <div className="fixed bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-white/80 to-transparent pointer-events-none" />
+      {/* Bottom Safe Area */}
+      <div className="fixed bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-white/80 to-transparent pointer-events-none" />
     </div>
   );
 };
