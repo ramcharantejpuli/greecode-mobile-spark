@@ -28,7 +28,7 @@ const MainInterface: React.FC = () => {
       title: 'Interview Assistant',
       description: 'Ace your interview with real time Answers!',
       icon: Briefcase,
-      color: 'bg-[#2DD4BF]', // Green color from the image
+      color: 'bg-[#2DD4BF]', // Keep green color for this box only
       textColor: 'text-white',
       progress: 75,
       isSpecial: true
@@ -83,14 +83,14 @@ const MainInterface: React.FC = () => {
       <div className="sticky top-0 z-40 bg-white border-b border-gray-200">
         <div className="flex items-center justify-between p-4">
           <div className="animate-fade-in-up">
-            <h1 className="text-xl font-bold text-black">Greecode-Copilot</h1>
+            <h1 className="text-xl font-bold text-black">Greecode</h1>
             <p className="text-xs text-gray-600">Ready to ace your interview?</p>
           </div>
           
           <Button 
             variant="outline" 
             size="icon"
-            className="animate-bounce-in border-gray-300 hover:border-gray-400 w-10 h-10 bg-white hover:bg-gray-50"
+            className="animate-bounce-in border-yellow-300 hover:border-yellow-400 w-10 h-10 bg-white hover:bg-yellow-50"
           >
             <Settings className="w-4 h-4 text-black" />
           </Button>
@@ -109,7 +109,7 @@ const MainInterface: React.FC = () => {
                 key={feature.id}
                 className={`
                   cursor-pointer transition-all duration-500 hover:scale-105 hover:shadow-lg
-                  ${isSelected ? 'ring-2 ring-gray-400 scale-105' : ''}
+                  ${isSelected ? 'ring-2 ring-yellow-400 scale-105' : ''}
                   ${feature.color} border border-gray-200 shadow-md
                 `}
                 style={{ 
@@ -119,8 +119,8 @@ const MainInterface: React.FC = () => {
                 onClick={() => handleCardClick(feature.id)}
               >
                 <CardHeader className="pb-2 p-4">
-                  <div className={`w-10 h-10 rounded-xl ${feature.isSpecial ? 'bg-white/20' : 'bg-gray-100'} flex items-center justify-center mb-2`}>
-                    <Icon className={`w-5 h-5 ${feature.isSpecial ? 'text-white' : 'text-black'}`} />
+                  <div className={`w-10 h-10 rounded-xl ${feature.isSpecial ? 'bg-white/20' : 'bg-yellow-100'} flex items-center justify-center mb-2`}>
+                    <Icon className={`w-5 h-5 ${feature.isSpecial ? 'text-white' : 'text-yellow-600'}`} />
                   </div>
                   <CardTitle className={`text-sm ${feature.textColor} leading-tight font-semibold`}>
                     {feature.title}
@@ -137,9 +137,9 @@ const MainInterface: React.FC = () => {
                       <span className={`${feature.isSpecial ? 'text-white/70' : 'text-gray-500'}`}>Progress</span>
                       <span className={`${feature.isSpecial ? 'text-white' : 'text-black'} font-medium`}>{feature.progress}%</span>
                     </div>
-                    <div className={`w-full ${feature.isSpecial ? 'bg-white/20' : 'bg-gray-200'} rounded-full h-1.5`}>
+                    <div className={`w-full ${feature.isSpecial ? 'bg-white/20' : 'bg-yellow-200'} rounded-full h-1.5`}>
                       <div 
-                        className={`h-1.5 ${feature.isSpecial ? 'bg-white' : 'bg-black'} rounded-full transition-all duration-1000`}
+                        className={`h-1.5 ${feature.isSpecial ? 'bg-white' : 'bg-yellow-500'} rounded-full transition-all duration-1000`}
                         style={{ width: isSelected ? `${feature.progress}%` : '0%' }}
                       />
                     </div>
@@ -157,25 +157,25 @@ const MainInterface: React.FC = () => {
           })}
         </div>
 
-        {/* AI Response Panel - Updated for white/black theme */}
+        {/* AI Response Panel - Updated for yellow/white/black theme */}
         <Card className="bg-white border border-gray-200 shadow-md animate-fade-in-up">
           <CardHeader className="pb-3">
             <CardTitle className="flex items-center gap-3 text-black text-lg">
-              <div className="w-8 h-8 rounded-lg bg-black flex items-center justify-center">
-                <MessageSquare className="w-4 h-4 text-white" />
+              <div className="w-8 h-8 rounded-lg bg-yellow-400 flex items-center justify-center">
+                <MessageSquare className="w-4 h-4 text-black" />
               </div>
               AI Assistant
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="min-h-24 p-4 bg-gray-50 rounded-lg mb-4 border border-gray-100">
+            <div className="min-h-24 p-4 bg-yellow-50 rounded-lg mb-4 border border-yellow-100">
               {isRecording ? (
                 <div className="flex items-center gap-3">
                   <div className="flex gap-1">
                     {[...Array(5)].map((_, i) => (
                       <div 
                         key={i}
-                        className={`w-1 bg-[#2DD4BF] rounded-full animate-pulse`}
+                        className={`w-1 bg-yellow-500 rounded-full animate-pulse`}
                         style={{ 
                           height: `${Math.random() * 20 + 10}px`,
                           animationDelay: `${i * 100}ms`
@@ -183,7 +183,7 @@ const MainInterface: React.FC = () => {
                       />
                     ))}
                   </div>
-                  <span className="text-[#2DD4BF] text-sm font-medium">Listening...</span>
+                  <span className="text-yellow-600 text-sm font-medium">Listening...</span>
                 </div>
               ) : (
                 <div className="text-gray-600 text-sm">
@@ -196,7 +196,7 @@ const MainInterface: React.FC = () => {
             
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 text-xs text-gray-500">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                <div className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse" />
                 AI Assistant Active
               </div>
             </div>
@@ -204,19 +204,19 @@ const MainInterface: React.FC = () => {
         </Card>
       </div>
 
-      {/* Floating Action Button - Updated colors */}
+      {/* Floating Action Button - Updated to yellow */}
       <div className="fixed bottom-6 right-6 z-50">
         <Button 
           onClick={toggleRecording}
           className={`
             w-16 h-16 rounded-full shadow-2xl relative overflow-hidden transition-all duration-300
-            ${isRecording ? 'bg-red-500 hover:bg-red-600 scale-110' : 'bg-[#2DD4BF] hover:bg-[#2DD4BF]/90'}
+            ${isRecording ? 'bg-red-500 hover:bg-red-600 scale-110' : 'bg-yellow-400 hover:bg-yellow-500'}
           `}
         >
           {isRecording ? (
             <Pause className="w-7 h-7 text-white" />
           ) : (
-            <Mic className="w-7 h-7 text-white" />
+            <Mic className="w-7 h-7 text-black" />
           )}
           
           {/* Ripple Effect */}

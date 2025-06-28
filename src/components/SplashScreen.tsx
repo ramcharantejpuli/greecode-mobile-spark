@@ -41,17 +41,17 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
           {showBolt && (
             <div className={`relative transition-all duration-1000 ${logoMoveLeft ? 'mr-6' : 'mb-8'}`}>
               <div className={`
-                rounded-full bg-gradient-to-br from-orange-400 to-orange-500 
+                rounded-full bg-gradient-to-br from-yellow-400 to-yellow-500 
                 flex items-center justify-center shadow-2xl
                 transition-all duration-1000 ease-out
                 ${boltExpand ? 'w-20 h-20 sm:w-24 sm:h-24' : 'w-16 h-16 sm:w-20 sm:h-20'}
                 ${showBolt ? 'animate-thinder-bolt-appear' : ''}
               `}>
-                <Zap className={`text-slate-800 transition-all duration-500 ${boltExpand ? 'w-10 h-10 sm:w-12 sm:h-12' : 'w-8 h-8 sm:w-10 sm:h-10'}`} fill="currentColor" />
+                <Zap className={`text-black transition-all duration-500 ${boltExpand ? 'w-10 h-10 sm:w-12 sm:h-12' : 'w-8 h-8 sm:w-10 sm:h-10'}`} fill="currentColor" />
                 
                 {/* Pulsing Rings */}
-                <div className="absolute inset-0 rounded-full border-2 border-orange-400 animate-ping opacity-30"></div>
-                <div className="absolute inset-[-6px] sm:inset-[-8px] rounded-full border border-orange-400/40 animate-pulse"></div>
+                <div className="absolute inset-0 rounded-full border-2 border-yellow-400 animate-ping opacity-30"></div>
+                <div className="absolute inset-[-6px] sm:inset-[-8px] rounded-full border border-yellow-400/40 animate-pulse"></div>
               </div>
             </div>
           )}
@@ -61,7 +61,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
             {/* Logo Text */}
             {showLogo && (
               <div className="animate-logo-slide-in opacity-0">
-                <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2 leading-tight">
+                <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent mb-2 leading-tight">
                   Greecode
                 </h1>
               </div>
@@ -70,11 +70,11 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
             {/* Tagline */}
             {showTagline && (
               <div className="animate-tagline-fade-in opacity-0">
-                <p className="text-base sm:text-lg text-muted-foreground mb-2">
+                <p className="text-base sm:text-lg text-gray-600 mb-2">
                   Your AI-Powered Interview Assistant
                 </p>
-                <p className="text-sm text-muted-foreground/70">
-                  by <span className="text-primary font-medium">Greecode.in</span>
+                <p className="text-sm text-gray-500">
+                  by <span className="text-yellow-500 font-medium">Greecode.in</span>
                 </p>
               </div>
             )}
