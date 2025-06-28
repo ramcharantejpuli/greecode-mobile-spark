@@ -1,17 +1,14 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
-  Mic, 
   MessageSquare, 
-  Settings, 
   User, 
   Briefcase, 
   Brain,
   Zap,
-  Play,
-  Pause,
   Menu,
-  ArrowRight
+  ArrowRight,
+  X
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -20,7 +17,21 @@ import { useNavigate } from 'react-router-dom';
 const MainInterface: React.FC = () => {
   const [isRecording, setIsRecording] = useState(false);
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [greeting, setGreeting] = useState('');
   const navigate = useNavigate();
+
+  // Set greeting based on time of day
+  useEffect(() => {
+    const hour = new Date().getHours();
+    if (hour < 12) {
+      setGreeting('Good Morning');
+    } else if (hour < 17) {
+      setGreeting('Good Afternoon');
+    } else {
+      setGreeting('Good Evening');
+    }
+  }, []);
 
   const features = [
     {
@@ -65,6 +76,13 @@ const MainInterface: React.FC = () => {
     }
   ];
 
+  const navigationItems = [
+    { title: 'Interview Assistant', description: 'Ace your interview with real time Answers!', progress: 75, id: 1 },
+    { title: 'AI Analysis', description: 'Real-time response feedback', progress: 60, id: 2 },
+    { title: 'Mock Interviews', description: 'Simulate real scenarios', progress: 40, id: 3 },
+    { title: 'Performance', description: 'Track your progress', progress: 85, id: 4 }
+  ];
+
   const handleCardClick = (id: number) => {
     if (id === 1) {
       navigate('/interview-assistant');
@@ -77,6 +95,10 @@ const MainInterface: React.FC = () => {
     setIsRecording(!isRecording);
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Mobile Header */}
@@ -84,18 +106,90 @@ const MainInterface: React.FC = () => {
         <div className="flex items-center justify-between p-4">
           <div className="animate-fade-in-up">
             <h1 className="text-xl font-bold text-black">Greecode</h1>
-            <p className="text-xs text-gray-600">Ready to ace your interview?</p>
           </div>
           
           <Button 
             variant="outline" 
             size="icon"
             className="animate-bounce-in border-yellow-300 hover:border-yellow-400 w-10 h-10 bg-white hover:bg-yellow-50"
+            onClick={toggleMenu}
           >
-            <Settings className="w-4 h-4 text-black" />
+            <Menu className="w-4 h-4 text-black" />
           </Button>
         </div>
       </div>
+
+      {/* Sliding Navigation Menu */}
+      <div className={`fixed top-0 right-0 h-full w-80 bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out ${
+        isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+      }`}>
+        <div className="p-6 border-b border-gray-200">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-lg font-semibold text-black">Menu</h2>
+            <Button 
+              variant="ghost" 
+              size="icon"
+              onClick={toggleMenu}
+              className="hover:bg-gray-100"
+            >
+              <X className="w-5 h-5 text-black" />
+            </Button>
+          </div>
+          
+          {/* User Profile Section */}
+          <div className="flex items-center gap-3 p-3 bg-yellow-50 rounded-lg">
+            <div className="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center">
+              <User className="w-6 h-6 text-black" />
+            </div>
+            <div>
+              <p className="text-sm font-medium text-black">{greeting}</p>
+              <p className="text-lg font-semibold text-black">Ravi</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Navigation Items */}
+        <div className="p-6 space-y-4">
+          {navigationItems.map((item) => (
+            <div 
+              key={item.id}
+              className="p-4 bg-gray-50 rounded-lg hover:bg-yellow-50 transition-colors cursor-pointer"
+              onClick={() => {
+                handleCardClick(item.id);
+                setIsMenuOpen(false);
+              }}
+            >
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="font-semibold text-black">{item.title}</h3>
+                <ArrowRight className="w-4 h-4 text-gray-600" />
+              </div>
+              <p className="text-sm text-gray-600 mb-3">{item.description}</p>
+              
+              {/* Progress Bar */}
+              <div className="space-y-1">
+                <div className="flex justify-between text-xs">
+                  <span className="text-gray-500">Progress</span>
+                  <span className="text-black font-medium">{item.progress}%</span>
+                </div>
+                <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div 
+                    className="h-2 bg-yellow-400 rounded-full transition-all duration-500"
+                    style={{ width: `${item.progress}%` }}
+                  />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Overlay */}
+      {isMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity duration-300"
+          onClick={toggleMenu}
+        />
+      )}
 
       <div className="p-4 pb-24">
         {/* Feature Cards Grid - Mobile Optimized */}
@@ -157,7 +251,7 @@ const MainInterface: React.FC = () => {
           })}
         </div>
 
-        {/* AI Response Panel - Updated for yellow/white/black theme */}
+        {/* AI Response Panel */}
         <Card className="bg-white border border-gray-200 shadow-md animate-fade-in-up">
           <CardHeader className="pb-3">
             <CardTitle className="flex items-center gap-3 text-black text-lg">
@@ -204,25 +298,19 @@ const MainInterface: React.FC = () => {
         </Card>
       </div>
 
-      {/* Floating Action Button - Updated to yellow */}
+      {/* Floating Customer Care Button */}
       <div className="fixed bottom-6 right-6 z-50">
         <Button 
           onClick={toggleRecording}
-          className={`
-            w-16 h-16 rounded-full shadow-2xl relative overflow-hidden transition-all duration-300
-            ${isRecording ? 'bg-red-500 hover:bg-red-600 scale-110' : 'bg-yellow-400 hover:bg-yellow-500'}
-          `}
+          className="w-16 h-16 rounded-full shadow-2xl relative overflow-hidden transition-all duration-300 bg-yellow-400 hover:bg-yellow-500"
         >
-          {isRecording ? (
-            <Pause className="w-7 h-7 text-white" />
-          ) : (
-            <Mic className="w-7 h-7 text-black" />
-          )}
-          
-          {/* Ripple Effect */}
-          {isRecording && (
-            <div className="absolute inset-0 rounded-full bg-white/20 animate-ping" />
-          )}
+          <svg 
+            className="w-7 h-7 text-black" 
+            fill="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 4.5C14.8 4.4 14.6 4.4 14.4 4.5L12 5.5L9.6 4.5C9.4 4.4 9.2 4.4 9 4.5L3 7V9L9 6.5L12 7.5L15 6.5L21 9ZM4 9V17H6V21H8V17H10V19H12V17H14V21H16V17H18V19H20V17H22V9H4Z"/>
+          </svg>
         </Button>
       </div>
 
