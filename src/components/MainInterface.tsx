@@ -124,57 +124,57 @@ const MainInterface: React.FC = () => {
       <div className={`fixed top-0 right-0 h-full w-full bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out ${
         isMenuOpen ? 'translate-x-0' : 'translate-x-full'
       }`}>
-        <div className="p-6 border-b-4 border-black">
+        <div className="p-8 border-b-4 border-black">
           <div className="flex items-center justify-between mb-8 min-h-[70px]">
-            <h2 className="text-2xl font-bold text-black">Menu</h2>
+            <h2 className="text-3xl font-bold text-black">Menu</h2>
             <Button 
               variant="ghost" 
               size="icon"
               onClick={toggleMenu}
-              className="hover:bg-gray-100 w-14 h-14 touch-target rounded-xl"
+              className="hover:bg-gray-100 w-16 h-16 touch-target rounded-xl border-2 border-transparent hover:border-gray-300"
             >
-              <X className="w-7 h-7 text-black" />
+              <X className="w-8 h-8 text-black" />
             </Button>
           </div>
           
           {/* User Profile Section - Mobile Optimized */}
-          <div className="flex items-center gap-6 p-6 bg-yellow-50 rounded-2xl border-4 border-black">
-            <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center border-4 border-black">
-              <User className="w-8 h-8 text-black" />
+          <div className="flex items-center gap-8 p-8 bg-yellow-50 rounded-3xl border-4 border-black">
+            <div className="w-20 h-20 bg-yellow-400 rounded-full flex items-center justify-center border-4 border-black">
+              <User className="w-10 h-10 text-black" />
             </div>
             <div>
-              <p className="text-base font-medium text-black">{greeting}</p>
-              <p className="text-2xl font-bold text-black">Ravi</p>
+              <p className="text-lg font-medium text-black">{greeting}</p>
+              <p className="text-3xl font-bold text-black">Ravi</p>
             </div>
           </div>
         </div>
 
         {/* Navigation Items - Mobile Optimized */}
-        <div className="p-6 space-y-6 overflow-y-auto max-h-[calc(100vh-250px)]">
+        <div className="p-8 space-y-8 overflow-y-auto max-h-[calc(100vh-300px)]">
           {navigationItems.map((item) => (
             <div 
               key={item.id}
-              className="p-6 bg-gray-50 rounded-2xl border-4 border-black hover:bg-yellow-50 transition-colors cursor-pointer touch-target active:scale-95 transform transition-transform"
+              className="p-8 bg-gray-50 rounded-3xl border-4 border-black hover:bg-yellow-50 transition-colors cursor-pointer touch-target active:scale-95 transform transition-transform shadow-lg hover:shadow-xl"
               onClick={() => {
                 handleCardClick(item.id);
                 setIsMenuOpen(false);
               }}
             >
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="font-bold text-black text-xl">{item.title}</h3>
-                <ArrowRight className="w-6 h-6 text-black" />
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="font-bold text-black text-2xl">{item.title}</h3>
+                <ArrowRight className="w-8 h-8 text-black" />
               </div>
-              <p className="text-base text-gray-600 mb-6 leading-relaxed">{item.description}</p>
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">{item.description}</p>
               
               {/* Progress Bar */}
-              <div className="space-y-3">
-                <div className="flex justify-between text-base">
+              <div className="space-y-4">
+                <div className="flex justify-between text-lg">
                   <span className="text-gray-500 font-medium">Progress</span>
                   <span className="text-black font-bold">{item.progress}%</span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-4 border-2 border-black">
+                <div className="w-full bg-gray-200 rounded-full h-5 border-3 border-black">
                   <div 
-                    className="h-full bg-yellow-400 rounded-full transition-all duration-500 border-r-2 border-black"
+                    className="h-full bg-yellow-400 rounded-full transition-all duration-500 border-r-3 border-black"
                     style={{ width: `${item.progress}%` }}
                   />
                 </div>
