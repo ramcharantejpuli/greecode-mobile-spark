@@ -103,19 +103,19 @@ const MainInterface: React.FC = () => {
   return (
     <div className="min-h-screen bg-white max-w-sm mx-auto relative overflow-x-hidden">
       {/* Mobile Header - Fixed */}
-      <div className="sticky top-0 z-40 bg-white border-b border-black">
-        <div className="flex items-center justify-between p-4 min-h-[60px]">
+      <div className="sticky top-0 z-40 bg-white border-b-4 border-black">
+        <div className="flex items-center justify-between p-6 min-h-[70px]">
           <div className="animate-fade-in-up">
-            <h1 className="text-2xl font-bold text-black">Greecode</h1>
+            <h1 className="text-3xl font-bold text-black">Greecode</h1>
           </div>
           
           <Button 
             variant="outline" 
             size="icon"
-            className="animate-bounce-in border-2 border-black hover:border-black w-12 h-12 bg-white hover:bg-yellow-400 touch-target"
+            className="animate-bounce-in border-4 border-black hover:border-black w-14 h-14 bg-white hover:bg-yellow-400 touch-target rounded-xl"
             onClick={toggleMenu}
           >
-            <Menu className="w-5 h-5 text-black" />
+            <Menu className="w-6 h-6 text-black" />
           </Button>
         </div>
       </div>
@@ -124,57 +124,57 @@ const MainInterface: React.FC = () => {
       <div className={`fixed top-0 right-0 h-full w-full bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out ${
         isMenuOpen ? 'translate-x-0' : 'translate-x-full'
       }`}>
-        <div className="p-6 border-b border-black">
-          <div className="flex items-center justify-between mb-6 min-h-[60px]">
-            <h2 className="text-xl font-bold text-black">Menu</h2>
+        <div className="p-6 border-b-4 border-black">
+          <div className="flex items-center justify-between mb-8 min-h-[70px]">
+            <h2 className="text-2xl font-bold text-black">Menu</h2>
             <Button 
               variant="ghost" 
               size="icon"
               onClick={toggleMenu}
-              className="hover:bg-gray-100 w-12 h-12 touch-target"
+              className="hover:bg-gray-100 w-14 h-14 touch-target rounded-xl"
             >
-              <X className="w-6 h-6 text-black" />
+              <X className="w-7 h-7 text-black" />
             </Button>
           </div>
           
           {/* User Profile Section - Mobile Optimized */}
-          <div className="flex items-center gap-4 p-4 bg-yellow-50 rounded-lg border-2 border-black">
-            <div className="w-14 h-14 bg-yellow-400 rounded-full flex items-center justify-center border-2 border-black">
-              <User className="w-7 h-7 text-black" />
+          <div className="flex items-center gap-6 p-6 bg-yellow-50 rounded-2xl border-4 border-black">
+            <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center border-4 border-black">
+              <User className="w-8 h-8 text-black" />
             </div>
             <div>
-              <p className="text-sm font-medium text-black">{greeting}</p>
-              <p className="text-xl font-bold text-black">Ravi</p>
+              <p className="text-base font-medium text-black">{greeting}</p>
+              <p className="text-2xl font-bold text-black">Ravi</p>
             </div>
           </div>
         </div>
 
         {/* Navigation Items - Mobile Optimized */}
-        <div className="p-6 space-y-4 overflow-y-auto max-h-[calc(100vh-200px)]">
+        <div className="p-6 space-y-6 overflow-y-auto max-h-[calc(100vh-250px)]">
           {navigationItems.map((item) => (
             <div 
               key={item.id}
-              className="p-5 bg-gray-50 rounded-lg border-2 border-black hover:bg-yellow-50 transition-colors cursor-pointer touch-target"
+              className="p-6 bg-gray-50 rounded-2xl border-4 border-black hover:bg-yellow-50 transition-colors cursor-pointer touch-target active:scale-95 transform transition-transform"
               onClick={() => {
                 handleCardClick(item.id);
                 setIsMenuOpen(false);
               }}
             >
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="font-bold text-black text-lg">{item.title}</h3>
-                <ArrowRight className="w-5 h-5 text-black" />
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-bold text-black text-xl">{item.title}</h3>
+                <ArrowRight className="w-6 h-6 text-black" />
               </div>
-              <p className="text-sm text-gray-600 mb-4 leading-relaxed">{item.description}</p>
+              <p className="text-base text-gray-600 mb-6 leading-relaxed">{item.description}</p>
               
               {/* Progress Bar */}
-              <div className="space-y-2">
-                <div className="flex justify-between text-sm">
+              <div className="space-y-3">
+                <div className="flex justify-between text-base">
                   <span className="text-gray-500 font-medium">Progress</span>
                   <span className="text-black font-bold">{item.progress}%</span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-3 border border-black">
+                <div className="w-full bg-gray-200 rounded-full h-4 border-2 border-black">
                   <div 
-                    className="h-full bg-yellow-400 rounded-full transition-all duration-500 border-r border-black"
+                    className="h-full bg-yellow-400 rounded-full transition-all duration-500 border-r-2 border-black"
                     style={{ width: `${item.progress}%` }}
                   />
                 </div>
@@ -192,9 +192,9 @@ const MainInterface: React.FC = () => {
         />
       )}
 
-      <div className="p-4 pb-32">
+      <div className="p-6 pb-32">
         {/* Feature Cards Grid - Mobile Optimized */}
-        <div className="grid grid-cols-2 gap-4 mb-8">
+        <div className="grid grid-cols-2 gap-6 mb-10">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             const isSelected = selectedCard === feature.id;
@@ -203,9 +203,9 @@ const MainInterface: React.FC = () => {
               <Card 
                 key={feature.id}
                 className={`
-                  cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg touch-target
+                  cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg touch-target active:scale-95 transform
                   ${isSelected ? 'ring-4 ring-yellow-400 scale-105' : ''}
-                  ${feature.color} border-2 border-black shadow-lg
+                  ${feature.color} border-4 border-black shadow-lg rounded-2xl
                 `}
                 style={{ 
                   animationDelay: `${index * 150}ms`,
@@ -213,37 +213,37 @@ const MainInterface: React.FC = () => {
                 }}
                 onClick={() => handleCardClick(feature.id)}
               >
-                <CardHeader className="pb-3 p-5">
-                  <div className={`w-12 h-12 rounded-xl ${feature.isSpecial ? 'bg-white/20' : 'bg-yellow-400'} flex items-center justify-center mb-3 border-2 ${feature.isSpecial ? 'border-white/30' : 'border-black'}`}>
-                    <Icon className={`w-6 h-6 ${feature.isSpecial ? 'text-white' : 'text-black'}`} />
+                <CardHeader className="pb-4 p-6">
+                  <div className={`w-14 h-14 rounded-2xl ${feature.isSpecial ? 'bg-white/20' : 'bg-yellow-400'} flex items-center justify-center mb-4 border-4 ${feature.isSpecial ? 'border-white/30' : 'border-black'}`}>
+                    <Icon className={`w-7 h-7 ${feature.isSpecial ? 'text-white' : 'text-black'}`} />
                   </div>
-                  <CardTitle className={`text-base ${feature.textColor} leading-tight font-bold`}>
+                  <CardTitle className={`text-lg ${feature.textColor} leading-tight font-bold`}>
                     {feature.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="p-5 pt-0">
-                  <p className={`text-sm ${feature.isSpecial ? 'text-white/80' : 'text-gray-600'} mb-4 leading-relaxed`}>
+                <CardContent className="p-6 pt-0">
+                  <p className={`text-base ${feature.isSpecial ? 'text-white/80' : 'text-gray-600'} mb-6 leading-relaxed`}>
                     {feature.description}
                   </p>
                   
                   {/* Progress Bar */}
-                  <div className="space-y-2">
-                    <div className="flex justify-between text-sm">
+                  <div className="space-y-3">
+                    <div className="flex justify-between text-base">
                       <span className={`${feature.isSpecial ? 'text-white/70' : 'text-gray-500'} font-medium`}>Progress</span>
                       <span className={`${feature.isSpecial ? 'text-white' : 'text-black'} font-bold`}>{feature.progress}%</span>
                     </div>
-                    <div className={`w-full ${feature.isSpecial ? 'bg-white/20' : 'bg-gray-200'} rounded-full h-2 border ${feature.isSpecial ? 'border-white/30' : 'border-black'}`}>
+                    <div className={`w-full ${feature.isSpecial ? 'bg-white/20' : 'bg-gray-200'} rounded-full h-3 border-2 ${feature.isSpecial ? 'border-white/30' : 'border-black'}`}>
                       <div 
-                        className={`h-2 ${feature.isSpecial ? 'bg-white' : 'bg-yellow-400'} rounded-full transition-all duration-1000 ${!feature.isSpecial ? 'border-r border-black' : ''}`}
+                        className={`h-3 ${feature.isSpecial ? 'bg-white' : 'bg-yellow-400'} rounded-full transition-all duration-1000 ${!feature.isSpecial ? 'border-r-2 border-black' : ''}`}
                         style={{ width: isSelected ? `${feature.progress}%` : '0%' }}
                       />
                     </div>
                   </div>
 
                   {feature.id === 1 && (
-                    <div className="mt-4 flex items-center text-sm text-white/90 font-medium">
+                    <div className="mt-6 flex items-center text-base text-white/90 font-medium">
                       <span>Get Started</span>
-                      <ArrowRight className="w-4 h-4 ml-2" />
+                      <ArrowRight className="w-5 h-5 ml-3" />
                     </div>
                   )}
                 </CardContent>
@@ -253,24 +253,24 @@ const MainInterface: React.FC = () => {
         </div>
 
         {/* AI Response Panel - Mobile Optimized */}
-        <Card className="bg-white border-2 border-black shadow-lg animate-fade-in-up">
-          <CardHeader className="pb-4 p-6">
-            <CardTitle className="flex items-center gap-4 text-black text-xl">
-              <div className="w-10 h-10 rounded-lg bg-yellow-400 flex items-center justify-center border-2 border-black">
-                <MessageSquare className="w-5 h-5 text-black" />
+        <Card className="bg-white border-4 border-black shadow-lg animate-fade-in-up rounded-2xl">
+          <CardHeader className="pb-6 p-8">
+            <CardTitle className="flex items-center gap-6 text-black text-2xl">
+              <div className="w-12 h-12 rounded-2xl bg-yellow-400 flex items-center justify-center border-4 border-black">
+                <MessageSquare className="w-6 h-6 text-black" />
               </div>
               AI Assistant
             </CardTitle>
           </CardHeader>
-          <CardContent className="p-6 pt-0">
-            <div className="min-h-32 p-5 bg-yellow-50 rounded-lg mb-6 border-2 border-black">
+          <CardContent className="p-8 pt-0">
+            <div className="min-h-40 p-6 bg-yellow-50 rounded-2xl mb-8 border-4 border-black">
               {isRecording ? (
-                <div className="flex items-center gap-4">
-                  <div className="flex gap-1">
+                <div className="flex items-center gap-6">
+                  <div className="flex gap-2">
                     {[...Array(5)].map((_, i) => (
                       <div 
                         key={i}
-                        className={`w-1.5 bg-yellow-500 rounded-full animate-pulse`}
+                        className={`w-2 bg-yellow-500 rounded-full animate-pulse`}
                         style={{ 
                           height: `${Math.random() * 20 + 15}px`,
                           animationDelay: `${i * 100}ms`
@@ -278,10 +278,10 @@ const MainInterface: React.FC = () => {
                       />
                     ))}
                   </div>
-                  <span className="text-yellow-600 text-base font-bold">Listening...</span>
+                  <span className="text-yellow-600 text-lg font-bold">Listening...</span>
                 </div>
               ) : (
-                <div className="text-gray-600 text-base">
+                <div className="text-gray-600 text-lg">
                   <span className="typing-cursor font-medium">
                     Hi! I'm your AI interview assistant. Tap the microphone to start practicing
                   </span>
@@ -290,8 +290,8 @@ const MainInterface: React.FC = () => {
             </div>
             
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3 text-sm text-gray-500">
-                <div className="w-3 h-3 bg-yellow-500 rounded-full animate-pulse" />
+              <div className="flex items-center gap-4 text-base text-gray-500">
+                <div className="w-4 h-4 bg-yellow-500 rounded-full animate-pulse" />
                 <span className="font-medium">AI Assistant Active</span>
               </div>
             </div>
@@ -300,12 +300,12 @@ const MainInterface: React.FC = () => {
       </div>
 
       {/* Floating Customer Care Button - Mobile Optimized */}
-      <div className="fixed bottom-8 right-6 z-50">
+      <div className="fixed bottom-10 right-8 z-50">
         <Button 
           onClick={toggleRecording}
-          className="w-16 h-16 rounded-full shadow-2xl relative overflow-hidden transition-all duration-300 bg-yellow-400 hover:bg-yellow-500 border-2 border-black touch-target"
+          className="w-18 h-18 rounded-full shadow-2xl relative overflow-hidden transition-all duration-300 bg-yellow-400 hover:bg-yellow-500 border-4 border-black touch-target active:scale-90 transform"
         >
-          <Headphones className="w-8 h-8 text-black" />
+          <Headphones className="w-9 h-9 text-black" />
           {isRecording && (
             <div className="absolute inset-0 rounded-full bg-white/20 animate-ping" />
           )}
@@ -313,7 +313,7 @@ const MainInterface: React.FC = () => {
       </div>
 
       {/* Bottom Safe Area */}
-      <div className="fixed bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-white/80 to-transparent pointer-events-none" />
+      <div className="fixed bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-white/80 to-transparent pointer-events-none" />
     </div>
   );
 };
