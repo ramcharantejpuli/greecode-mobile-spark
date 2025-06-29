@@ -46,14 +46,14 @@ const AuthFlow: React.FC<AuthFlowProps> = ({ onComplete }) => {
 
   if (currentStep === 'success') {
     return (
-      <div className="fixed inset-0 bg-white flex items-center justify-center p-4 sm:p-6">
-        <div className="w-full max-w-sm sm:max-w-md">
-          <Card className="bg-white border-2 border-black shadow-2xl success-animation">
-            <CardContent className="p-8 text-center">
-              <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-6 rounded-full bg-yellow-400 flex items-center justify-center">
-                <CheckCircle className="w-10 h-10 sm:w-12 sm:h-12 text-black success-checkmark" />
+      <div className="fixed inset-0 bg-gradient-to-br from-black via-gray-900 to-black flex items-center justify-center p-4 mobile-container">
+        <div className="w-full max-w-sm">
+          <Card className="bg-white border-4 border-black shadow-2xl success-animation">
+            <CardContent className="p-6 text-center">
+              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-yellow-400 flex items-center justify-center border-4 border-black">
+                <CheckCircle className="w-10 h-10 text-black success-checkmark" />
               </div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-black mb-4">
+              <h2 className="text-2xl font-bold text-black mb-4">
                 PIN Verified Successfully!
               </h2>
               <p className="text-gray-600 mb-6">
@@ -64,7 +64,7 @@ const AuthFlow: React.FC<AuthFlowProps> = ({ onComplete }) => {
                   {[...Array(3)].map((_, i) => (
                     <div
                       key={i}
-                      className="w-2 h-2 bg-yellow-400 rounded-full animate-bounce"
+                      className="w-2 h-2 bg-yellow-400 rounded-full animate-bounce border border-black"
                       style={{ animationDelay: `${i * 0.2}s` }}
                     />
                   ))}
@@ -79,26 +79,26 @@ const AuthFlow: React.FC<AuthFlowProps> = ({ onComplete }) => {
 
   if (currentStep === 'pin') {
     return (
-      <div className="fixed inset-0 bg-white flex items-center justify-center p-4 sm:p-6">
-        <div className="w-full max-w-sm sm:max-w-md">
-          <Card className="bg-white border-2 border-black shadow-2xl animate-slide-in-up">
+      <div className="fixed inset-0 bg-gradient-to-br from-black via-gray-900 to-black flex items-center justify-center p-4 mobile-container">
+        <div className="w-full max-w-sm">
+          <Card className="bg-white border-4 border-black shadow-2xl animate-slide-in-up">
             <CardHeader className="text-center pb-4">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 rounded-full bg-black flex items-center justify-center">
-                <Shield className="w-8 h-8 sm:w-10 sm:h-10 text-yellow-400" />
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-black flex items-center justify-center border-2 border-yellow-400">
+                <Shield className="w-8 h-8 text-yellow-400" />
               </div>
-              <CardTitle className="text-xl sm:text-2xl text-black">Secure Authentication</CardTitle>
-              <p className="text-sm sm:text-base text-gray-600">Enter your 6-digit PIN for secure access</p>
+              <CardTitle className="text-xl text-black font-bold">Secure Authentication</CardTitle>
+              <p className="text-sm text-gray-600">Enter your 6-digit PIN for secure access</p>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="text-center space-y-6">
-                <div className="p-4 sm:p-6 rounded-lg bg-gray-50 border-2 border-black">
+                <div className="p-4 rounded-lg bg-gray-50 border-4 border-black">
                   <div className="mb-4">
                     <Input
                       type="password"
                       value={pin}
                       onChange={(e) => handlePinChange(e.target.value)}
                       placeholder="Enter 6-digit PIN"
-                      className="text-center text-2xl font-mono bg-white border-2 border-black focus:border-yellow-400 focus:ring-yellow-400"
+                      className="text-center text-2xl font-mono bg-white border-4 border-black focus:border-yellow-400 focus:ring-yellow-400 h-14"
                       maxLength={6}
                       autoFocus
                     />
@@ -108,7 +108,7 @@ const AuthFlow: React.FC<AuthFlowProps> = ({ onComplete }) => {
                     {[...Array(6)].map((_, i) => (
                       <div
                         key={i}
-                        className={`pin-input-dot ${i < pin.length ? 'filled' : ''}`}
+                        className={`w-4 h-4 rounded-full border-2 border-black bg-white transition-all duration-300 ${i < pin.length ? 'bg-yellow-400 border-yellow-400 scale-110' : ''}`}
                       />
                     ))}
                   </div>
@@ -122,7 +122,7 @@ const AuthFlow: React.FC<AuthFlowProps> = ({ onComplete }) => {
                 </div>
                 
                 <p className="text-xs text-gray-500">
-                  Your PIN is encrypted and stored securely
+                  🔒 Your PIN is encrypted and stored securely
                 </p>
               </div>
             </CardContent>
@@ -133,42 +133,45 @@ const AuthFlow: React.FC<AuthFlowProps> = ({ onComplete }) => {
   }
 
   return (
-    <div className="fixed inset-0 bg-white flex items-center justify-center p-4 sm:p-6">
-      <div className="w-full max-w-sm sm:max-w-md">
-        <Card className="bg-white border-2 border-black shadow-2xl animate-slide-in-up">
-          <CardHeader className="text-center">
-            <CardTitle className="text-xl sm:text-2xl text-black">Welcome Back</CardTitle>
-            <p className="text-sm sm:text-base text-gray-600">Sign in to your account</p>
+    <div className="fixed inset-0 bg-gradient-to-br from-black via-gray-900 to-black flex items-center justify-center p-4 mobile-container">
+      <div className="w-full max-w-sm">
+        <Card className="bg-white border-4 border-black shadow-2xl animate-slide-in-up">
+          <CardHeader className="text-center pb-4">
+            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-yellow-400 flex items-center justify-center border-4 border-black">
+              <div className="text-2xl font-bold text-black">G</div>
+            </div>
+            <CardTitle className="text-xl text-black font-bold">Welcome to Greecode</CardTitle>
+            <p className="text-sm text-gray-600">Sign in to your account</p>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleLogin} className="space-y-6">
+            <form onSubmit={handleLogin} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-black font-medium">Email</Label>
+                <Label htmlFor="email" className="text-black font-bold text-sm">Email Address</Label>
                 <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500" />
+                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500" />
                   <Input
                     id="email"
                     type="email"
                     placeholder="your@email.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="pl-10 bg-white border-2 border-black focus:border-yellow-400 focus:ring-yellow-400 text-black touch-target"
+                    className="pl-12 bg-white border-4 border-black focus:border-yellow-400 focus:ring-yellow-400 text-black h-12 text-base"
                     required
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="password" className="text-black font-medium">Password</Label>
+                <Label htmlFor="password" className="text-black font-bold text-sm">Password</Label>
                 <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500" />
+                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500" />
                   <Input
                     id="password"
                     type={showPassword ? "text" : "password"}
                     placeholder="••••••••"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="pl-10 pr-10 bg-white border-2 border-black focus:border-yellow-400 focus:ring-yellow-400 text-black touch-target"
+                    className="pl-12 pr-12 bg-white border-4 border-black focus:border-yellow-400 focus:ring-yellow-400 text-black h-12 text-base"
                     required
                   />
                   <button
@@ -176,31 +179,36 @@ const AuthFlow: React.FC<AuthFlowProps> = ({ onComplete }) => {
                     onClick={() => setShowPassword(!showPassword)}
                     className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-black transition-colors touch-target"
                   >
-                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                    {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
                 </div>
               </div>
 
               <Button 
                 type="submit"
-                className="w-full bg-black hover:bg-gray-800 text-white font-medium border-2 border-black touch-target"
+                className="w-full bg-black hover:bg-gray-800 text-white font-bold border-4 border-black hover:border-yellow-400 h-12 text-base transition-all duration-300"
                 size="lg"
               >
-                Continue
+                Continue to Security
               </Button>
             </form>
 
             <div className="mt-6 text-center">
-              <p className="text-sm text-gray-600 mb-3">
-                Don't have an account?
-              </p>
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t-2 border-black"></div>
+                </div>
+                <div className="relative flex justify-center text-sm">
+                  <span className="bg-white px-4 text-gray-500 font-medium">New to Greecode?</span>
+                </div>
+              </div>
               <Button
                 variant="outline"
                 onClick={handleCreateAccount}
-                className="w-full border-2 border-black text-black hover:bg-yellow-400 hover:text-black touch-target"
+                className="w-full mt-4 border-4 border-black text-black hover:bg-yellow-400 hover:text-black font-bold h-12 text-base transition-all duration-300"
               >
                 Create Account
-                <ExternalLink className="ml-2 w-4 h-4" />
+                <ExternalLink className="ml-2 w-5 h-5" />
               </Button>
             </div>
           </CardContent>
